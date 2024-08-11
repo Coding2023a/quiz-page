@@ -5,10 +5,23 @@ const Result = ({ answers, questions }) => {
     answer === questions[index].answer ? acc + 1 : acc
   , 0);
 
+  let messageClass = '';
+  if (score === questions.length) {
+    messageClass = 'perfect-score';
+  } else if (score > questions.length / 2) {
+    messageClass = 'good-job';
+  } else {
+    messageClass = 'better-luck';
+  }
+
   return (
     <div className="result-container">
       <h2>Your Score: {score} / {questions.length}</h2>
-      <p>{score === questions.length ? "Perfect score!": score > questions.length / 2 ? "Good job!" : "Better luck next time."}</p>
+      <p className={messageClass}>
+        {score === questions.length ? "Perfect score!" : 
+         score > questions.length / 2 ? "Good job!" : 
+         "Better luck next time."}
+      </p>
     </div>
   );
 };

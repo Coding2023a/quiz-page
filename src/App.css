@@ -88,5 +88,36 @@ body {
 }
 
 .result-container {
-  font-size: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f0f8ff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 500px;
+  margin: 20px auto;
 }
+
+.result-container h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.result-container p {
+  font-size: 1.2rem;
+  color: #666;
+  margin-top: 0;
+}
+
+.result-container .perfect-score {
+  color: #4caf50; /* Green color for perfect score */
+}
+
+.result-container .good-job {
+  color: #ff9800; /* Orange color for good job */
+}
+
+.result-container .better-luck {
+  color: #f44336; /* Red color for better luck next time */
+}
+
