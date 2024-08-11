@@ -8,7 +8,7 @@ const Result = ({ answers, questions }) => {
   return (
     <div className="result-container">
       <h2>Your Score: {score} / {questions.length}</h2>
-      <p>{score === questions.length ? "Perfect score!" : "Good try!"}</p>
+      <p>{score === questions.length ? "Perfect score!": score > questions.length / 2 ? "Good job!" : "Better luck next time."}</p>
     </div>
   );
 };

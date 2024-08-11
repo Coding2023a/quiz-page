@@ -4,14 +4,17 @@ import Result from './components/Result';
 import './App.css';
 
 const questions = [
-  { question: "Who was the founder of Chabad Chassidus?", options: ["Rabbi Shneur Zalman of Liadi", "Rabbi Yosef Yitzchak Schneersohn", "Rabbi Menachem Mendel Schneerson"], answer: "Rabbi Shneur Zalman of Liadi" },
-  { question: "What is the name of the Chabad Rebbe who is referred to as the 'Alter Rebbe'?", options: ["Rabbi Menachem Mendel Schneerson", "Rabbi Shneur Zalman of Liadi", "Rabbi Yosef Yitzchak Schneersohn"], answer: "Rabbi Shneur Zalman of Liadi" },
-  { question: "Who was the Rebbe known for his teachings on the concept of 'Moshiach' and redemption?", options: ["Rabbi Menachem Mendel Schneerson", "Rabbi Shalom Dovber Schneersohn", "Rabbi Aharon of Chernobyl"], answer: "Rabbi Menachem Mendel Schneerson" },
-  { question: "What is the primary focus of Chabad Chassidus teachings?", options: ["Mysticism and Kabbalah", "The inner dimension of Torah", "Historical events"], answer: "The inner dimension of Torah" },
-  { question: "What is the name of the Chabad prayer for the welfare of the Jewish people and the coming of Moshiach recited on Shabbat?", options: ["Kaddish", "Mi Sheberach", "Tefillat HaShlach"], answer: "Mi Sheberach" },
-  { question: "Which Chabad Rebbe is associated with the 'Sefer HaTanya,' a foundational text of Chabad philosophy?", options: ["Rabbi Shneur Zalman of Liadi", "Rabbi Menachem Mendel Schneerson", "Rabbi Yosef Yitzchak Schneersohn"], answer: "Rabbi Shneur Zalman of Liadi" },
-  { question: "What is the name of the Chabad outreach program designed to encourage Jews to put on tefillin?", options: ["Mivtza Tefillin", "Mivtza Shabbat", "Mivtza Kashrut"], answer: "Mivtza Tefillin" },
+  { question: "What is the date of the passing of the first Chabad Rebbe, Rabbi Shneur Zalman of Liadi (Alter Rebbe)?", options: ["24th of Tevet", "10th of Shevat", "15th of Av"], answer: "24th of Tevet" },
+  { question: "On which date is the birthday of Rabbi Menachem Mendel Schneerson, the Lubavitcher Rebbe (Rebbe)?", options: ["11th of Nissan", "18th of Elul", "27th of Adar"], answer: "11th of Nissan" },
+  { question: "What is the date of the anniversary of the release of Rabbi Shneur Zalman of Liadi (Alter Rebbe) from imprisonment?", options: ["19th of Kislev", "22nd of Shevat", "5th of Cheshvan"], answer: "19th of Kislev" },
+  { question: "Which date marks the passing of Rabbi Yosef Yitzchak Schneersohn, the sixth Lubavitcher Rebbe (Rayatz)?", options: ["10th of Shevat", "5th of Tevet", "9th of Kislev"], answer: "10th of Shevat" },
+  { question: "When is the yahrzeit of Rabbi Shalom Dovber Schneersohn, the fifth Lubavitcher Rebbe (Rebbe Maharash)?", options: ["2nd of Nissan", "10th of Tevet", "14th of Adar"], answer: "2nd of Nissan" },
+  { question: "Which date is observed as the passing of the Rebbe's father, Rabbi Levi Yitzchak Schneerson (Rebbe Levi Yitzchak)?", options: ["20th of Av", "3rd of Tammuz", "12th of Tishrei"], answer: "20th of Av" },
+  { question: "On which date do Chabad Chassidim celebrate the birth of the Rebbe's mother, Rebbetzin Chana Schneerson (Rebbetzin Chana)?", options: ["25th of Elul", "10th of Adar", "21st of Tishrei"], answer: "25th of Elul" },
+  { question: "What is the date of the passing of Rabbi Menachem Mendel Schneerson's wife, Rebbetzin Chaya Mushka (Rebbetzin Chaya Mushka)?", options: ["22nd of Shevat", "1st of Kislev", "27th of Adar"], answer: "22nd of Shevat" },
+  { question: "Which date is observed as the Yahrzeit of the Alter Rebbe's wife, Rebbetzin Devorah Leah (Rebbetzin Devorah Leah)?", options: ["10th of Tevet", "15th of Kislev", "12th of Cheshvan"], answer: "10th of Tevet" },
 ];
+
 
 const App = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -33,14 +36,11 @@ const App = () => {
       } else {
         setShowResults(true);
       }
-    }, 1000);
+    }, 2000);
   };
 
   return (
     <div className="app">
-      <div className="questions-length-div">
-        {currentQuestion + 1} of {questions.length}
-      </div>
       {showResults ? (
         <Result answers={userAnswers} questions={questions} />
       ) : (
@@ -49,9 +49,17 @@ const App = () => {
             question={questions[currentQuestion]}
             onAnswer={handleAnswer}
           />
-          {feedback && <div className="feedback">{feedback}</div>}
+          {feedback && <div className={`feedback ${feedback === 'Correct!' ? 'correct' : 'incorrect'}`}>{feedback}</div>}
         </>
       )}
+      {currentQuestion < questions.length - 1 ? (
+        <div className="questions-length-div">
+          {currentQuestion + 1} of {questions.length}
+        </div>
+        ) : (
+          null
+        )
+      }
     </div>
   );
 };
