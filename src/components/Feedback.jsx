@@ -1,10 +1,12 @@
 import React from 'react';
 
-const Feedback = ({ feedback }) => {
+function Feedback({ feedback }) {
   if (!feedback) return null; // Avoid rendering the component if there's no feedback
 
   return (
-    <div className={`feedback ${feedback === 'Correct!' ? 'correct' : 'incorrect'}`}>
+    <div className={`feedback 
+    ${feedback === 'Correct!' ? 'correct' : 
+    'incorrect'}`}>
       {feedback}
     </div>
   );

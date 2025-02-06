@@ -2,7 +2,7 @@
 // This component receives two props:
 // - "answers": an array containing the user's answers.
 // - "questions": an array containing the quiz questions, including the correct answers.
-const Result = ({ answers, questions }) => {
+function Result({ answers, questions }) {
   // Calculate the user's score by comparing their answers to the correct answers.
   // Use the "reduce" function to iterate through the "answers" array and accumulate the score.
   const score = answers.reduce((acc, answer, index) =>
@@ -40,6 +40,5 @@ const Result = ({ answers, questions }) => {
     </div>
   );
 };
-
 // Export the "Result" component to make it available for use in other parts of the application.
 export default Result;

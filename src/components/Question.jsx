@@ -7,7 +7,9 @@ const Question = ({ question, onAnswer }) => {
     <div className="question-container">
       {/* Display the question text inside an <h2> element */}
       <h2>{question.question}</h2>
-      
+      {question.question === 'What is your favorite color?' 
+      && <img src={myImage} alt="" />
+      }
       <div className="options">
         {/* Iterate through the options array from the question object. */}
         {question.options.map((option, index) => (
@@ -21,6 +23,7 @@ const Question = ({ question, onAnswer }) => {
             {option}
           </button>
         ))}
+       {/* import myImage from '../image 9.png';  */}
       </div>
     </div>
   );
