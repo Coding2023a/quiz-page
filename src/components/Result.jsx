@@ -7,8 +7,7 @@ function Result({ answers, questions }) {
   // Use the "reduce" function to iterate through the "answers" array and accumulate the score.
   const score = answers.reduce((acc, answer, index) =>
     // If the answer matches the correct answer for the corresponding question, increment the score.
-    answer === questions[index].answer ? acc + 1 : acc
-  , 0);
+    answer === questions[index].answer ? acc + 1 : acc, 0);
 
   // Initialize a variable to hold the CSS class name for the result message.
   let messageClass = '';

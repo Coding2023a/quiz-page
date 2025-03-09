@@ -6,40 +6,39 @@ import jsQuestions from '../data/jsQuestions'; // Data file with JavaScript ques
 import './QuizPage.css'; // Importing CSS for styling
 import Feedback from '../components/Feedback';
 import QuestionTotal from '../components/QuestionTotal';
+// import myImage from '../image 9.png'
+// import rebbe from '../rebbe-groundbreaking.jpg'
+// import myImage2 from '../image 9.png'
+// import rebbe2 from '../rebbe-groundbreaking.jpg'
+
+// const images = [myImage, rebbe, myImage2, rebbe2]
+// explain props
 function QuizPage() {
       // State to track the current question index
-      const [currentQuestion, setCurrentQuestion] = useState(0);
-    
+      const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
       // State to store user's answers
       const [userAnswers, setUserAnswers] = useState([]);
-    
       // State to determine whether to show the results
       const [showResults, setShowResults] = useState(false);
-    
       // State to give feedback after an answer (e.g., "Correct!" or "Incorrect.")
       const [feedback, setFeedback] = useState('');
-
-      const questionsToUse = jsQuestions
-    
+      const questionsToUse = chassidusQuestions;
       // Function to handle user selecting an answer
       function handleAnswer(answer) {
         // Get the correct answer for the current question
-        const correctAnswer = questionsToUse[currentQuestion].answer;
-    
+        const correctAnswer = 
+        questionsToUse[currentQuestionIndex].answer;
         // Check if the user's answer matches the correct answer
         const isCorrect = correctAnswer === answer;
-    
         // Update feedback state based on correctness
         setFeedback(isCorrect ? 'Correct!' : 'Incorrect.');
-    
         // Delay for 1 seconds before showing the next question or results
         setTimeout(() => {
           setFeedback(''); // Clear feedback
           setUserAnswers([...userAnswers, answer]); // Add the user's answer to the answers array
-    
-          if (currentQuestion < questionsToUse.length - 1) {
+          if (currentQuestionIndex < questionsToUse.length - 1) {
             // Move to the next question if there are more questions
-            setCurrentQuestion(currentQuestion + 1);
+            setCurrentQuestionIndex(currentQuestionIndex + 1);
           } else {
             // Show results if this was the last question
             setShowResults(true);
@@ -50,6 +49,7 @@ function QuizPage() {
     return (
         <div className="quiz-app">
           {/* Show results screen if all questions are answered */}
+          {/* Here we have the result component and we're giving it access to 2 props */}
           {showResults ? (
             <Result 
                 answers={userAnswers} 
@@ -59,7 +59,8 @@ function QuizPage() {
             <>
               {/* Display the current question */}
               <Question
-                question={questionsToUse[currentQuestion]} // Pass the current question as a prop
+                // image={images[currentQuestionIndex]}
+                question={questionsToUse[currentQuestionIndex]} // Pass the current question as a prop
                 onAnswer={handleAnswer} // Pass the answer handler function as a prop
               />
               <Feedback 
@@ -68,7 +69,7 @@ function QuizPage() {
             </>
           )}
           <QuestionTotal 
-            currentQuestion={currentQuestion} 
+            currentQuestionIndex={currentQuestionIndex} 
             questionsToUse={questionsToUse}
           />
         </div>

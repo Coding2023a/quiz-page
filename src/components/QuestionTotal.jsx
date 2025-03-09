@@ -1,9 +1,9 @@
-function QuestionTotal({ currentQuestion, questionsToUse }) {
+function QuestionTotal({ currentQuestionIndex, questionsToUse }) {
     return <>
         {/* Display progress (current question number and total) */}
-        {currentQuestion < questionsToUse.length - 1 ? (
+        {currentQuestionIndex < questionsToUse.length - 1 ? (
             <div className="questionsToUse-length-div">
-              {currentQuestion + 1} of {questionsToUse.length} 
+              {currentQuestionIndex + 1} of {questionsToUse.length} 
               {/* Current question number */}
             </div>
           ) : (
