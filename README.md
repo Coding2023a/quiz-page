@@ -24,3 +24,5 @@ add this package.json
   "predeploy": "vite build",
   "deploy": "gh-pages -d dist"
 },
+
+npm run deploy
