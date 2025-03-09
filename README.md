@@ -4,3 +4,6 @@ nvm install 18
 nvm use 18
 surge ./dist your-custom-name.surge.sh
 surge teardown to remove
+
+
+npm install gh-pages --save-dev
